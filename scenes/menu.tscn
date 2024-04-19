@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0w5us5gb0eym"]
+
+[ext_resource type="StyleBox" path="res://styles/boton_hover.tres" id="1_pnk5d"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_xwwtt"]
+[ext_resource type="StyleBox" path="res://styles/boton.tres" id="2_sd4ws"]
+[ext_resource type="StyleBox" path="res://styles/boton_press.tres" id="3_f0mke"]
+[ext_resource type="PackedScene" uid="uid://ck2krdxor5a6b" path="res://scenes/parallax_background.tscn" id="4_k150q"]
+[ext_resource type="AudioStream" uid="uid://chp4pg50js27c" path="res://sounds/menu.mp3" id="6_qr16y"]
+[ext_resource type="Texture2D" uid="uid://bawdy6c7x020x" path="res://images/FLAPPY.png" id="7_5twdy"]
+
+[sub_resource type="Theme" id="Theme_n4pca"]
+Button/colors/font_color = Color(0.560784, 0.0156863, 0, 1)
+Button/colors/font_hover_color = Color(1, 0.356863, 0.286275, 1)
+Button/colors/font_pressed_color = Color(0.419608, 0.00784314, 0, 1)
+Button/styles/hover = ExtResource("1_pnk5d")
+Button/styles/normal = ExtResource("2_sd4ws")
+Button/styles/pressed = ExtResource("3_f0mke")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xwwtt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(928, 350)
+rotation = 0.000174494
+scale = Vector2(1.20883, 1.21314)
+texture = ExtResource("7_5twdy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 749.0
+offset_top = 574.0
+offset_right = 1134.0
+offset_bottom = 1126.0
+
+[node name="Iniciar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_n4pca")
+text = "Iniciar partida"
+
+[node name="Salir" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_n4pca")
+text = "Salir"
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("4_k150q")]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 382.0
+offset_top = 151.0
+offset_right = 422.0
+offset_bottom = 174.0
+
+[node name="menufondo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_qr16y")
+
+[connection signal="pressed" from="VBoxContainer/Iniciar" to="." method="_on_iniciar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]
