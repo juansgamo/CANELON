@@ -40,12 +40,12 @@ offset_top = 574.0
 offset_right = 1134.0
 offset_bottom = 1126.0
 
-[node name="Modo Individual" type="Button" parent="VBoxContainer"]
+[node name="Modo_Individual" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_n4pca")
 text = "Modo individual"
 
-[node name="Modo Multijugador" type="Button" parent="VBoxContainer"]
+[node name="Modo_Multijugador" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_n4pca")
 text = "Modo Multijugador
@@ -75,7 +75,7 @@ stream = ExtResource("6_qr16y")
 volume_db = -10.0
 autoplay = true
 
-[connection signal="pressed" from="VBoxContainer/Modo Individual" to="." method="_on_iniciar_pressed"]
-[connection signal="pressed" from="VBoxContainer/Modo Multijugador" to="." method="_on_iniciar_pressed"]
-[connection signal="pressed" from="VBoxContainer/Ajustes" to="." method="_on_iniciar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Modo_Individual" to="." method="_on_modo_individual_pressed"]
+[connection signal="pressed" from="VBoxContainer/Modo_Multijugador" to="." method="_on_modo_multijugador_pressed"]
+[connection signal="pressed" from="VBoxContainer/Ajustes" to="." method="_on_ajustes_pressed"]
 [connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]
