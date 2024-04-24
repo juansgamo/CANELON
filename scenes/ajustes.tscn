@@ -96,8 +96,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 min_value = 30.0
-max_value = 500.0
-value = 500.0
+max_value = 120.0
+value = 120.0
 rounded = true
 
 [node name="Brightness" type="Label" parent="TabContainer/Pantalla/MarginContainer/ResolutionSettings"]
