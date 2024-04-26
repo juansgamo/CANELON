@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d0w5us5gb0eym"]
+[gd_scene load_steps=10 format=3 uid="uid://d0w5us5gb0eym"]
 
 [ext_resource type="StyleBox" uid="uid://s0vig18r7r8a" path="res://styles/boton_hover.tres" id="1_pnk5d"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_xwwtt"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://ck2krdxor5a6b" path="res://scenes/parallax_background.tscn" id="4_k150q"]
 [ext_resource type="AudioStream" uid="uid://chp4pg50js27c" path="res://sounds/menu.mp3" id="6_qr16y"]
 [ext_resource type="PackedScene" uid="uid://mgesb0krb0v7" path="res://scenes/ajustes.tscn" id="8_60l7p"]
-[ext_resource type="Script" path="res://scripts/ajustes.gd" id="9_du732"]
 
 [sub_resource type="Theme" id="Theme_n4pca"]
 Button/colors/font_color = Color(0.745098, 0.588235, 1, 1)
@@ -80,7 +79,6 @@ autoplay = true
 
 [node name="Ajustes" parent="." instance=ExtResource("8_60l7p")]
 visible = false
-script = ExtResource("9_du732")
 
 [connection signal="pressed" from="VBoxContainer/Modo_Individual" to="." method="_on_modo_individual_pressed"]
 [connection signal="pressed" from="VBoxContainer/Modo_Multijugador" to="." method="_on_modo_multijugador_pressed"]

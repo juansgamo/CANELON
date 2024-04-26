@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://mgesb0krb0v7"]
+[gd_scene load_steps=6 format=3 uid="uid://mgesb0krb0v7"]
 
 [ext_resource type="Theme" uid="uid://cw5y2wo8afiyw" path="res://styles/letra.tres" id="1_txexu"]
+[ext_resource type="Script" path="res://scripts/ajustes.gd" id="1_yfqt6"]
+[ext_resource type="Texture2D" uid="uid://dh0x1ojbm4bx0" path="res://images/quit.png" id="2_yrlrc"]
 
 [sub_resource type="Theme" id="Theme_6nymb"]
 OptionButton/colors/font_color = Color(0.694118, 0.478431, 0.988235, 1)
@@ -16,11 +18,12 @@ size = Vector2i(900, 900)
 visible = true
 content_scale_mode = 2
 content_scale_aspect = 1
+script = ExtResource("1_yfqt6")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -31,6 +34,7 @@ color = Color(0.32549, 0, 0.498039, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -625.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
@@ -133,7 +137,6 @@ layout_mode = 2
 theme = ExtResource("1_txexu")
 
 [node name="Audio" type="TabBar" parent="TabContainer"]
-visible = false
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 theme = ExtResource("1_txexu")
@@ -247,7 +250,6 @@ layout_mode = 2
 theme = ExtResource("1_txexu")
 
 [node name="Juego" type="TabBar" parent="TabContainer"]
-visible = false
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 theme = ExtResource("1_txexu")
@@ -265,97 +267,47 @@ offset_bottom = 300.0
 layout_mode = 2
 columns = 2
 
-[node name="MasterVolume" type="Label" parent="TabContainer/Juego/MarginContainer/ResolutionSettings"]
+[node name="MouseSensitivity" type="Label" parent="TabContainer/Juego/MarginContainer/ResolutionSettings"]
 layout_mode = 2
 theme = ExtResource("1_txexu")
-text = "MasterVolume"
+text = "Sensibilidad 
+del ratón"
 
-[node name="MasterVolumeContainer" type="HBoxContainer" parent="TabContainer/Juego/MarginContainer/ResolutionSettings"]
+[node name="MouseSensitivitycONTAINER" type="HBoxContainer" parent="TabContainer/Juego/MarginContainer/ResolutionSettings"]
 layout_mode = 2
 
-[node name="HSlider" type="HSlider" parent="TabContainer/Juego/MarginContainer/ResolutionSettings/MasterVolumeContainer"]
+[node name="HSlider" type="HSlider" parent="TabContainer/Juego/MarginContainer/ResolutionSettings/MouseSensitivitycONTAINER"]
 custom_minimum_size = Vector2(100, 10)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-min_value = -50.0
-max_value = 0.0
-value = -15.0
-rounded = true
+min_value = 0.05
+max_value = 1.0
+step = 0.01
+value = 0.1
 
-[node name="MusicVolume" type="Label" parent="TabContainer/Juego/MarginContainer/ResolutionSettings"]
+[node name="cantidadSensibilidad" type="Label" parent="TabContainer/Juego/MarginContainer/ResolutionSettings/MouseSensitivitycONTAINER"]
 layout_mode = 2
 theme = ExtResource("1_txexu")
-text = "MusicVolume"
+text = "144"
 
-[node name="MusicVolumeContainer" type="HBoxContainer" parent="TabContainer/Juego/MarginContainer/ResolutionSettings"]
-layout_mode = 2
+[node name="Button" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -900.0
+offset_right = -380.0
+offset_bottom = 520.0
+grow_horizontal = 0
+scale = Vector2(0.09, 0.09)
+pivot_offset = Vector2(920, 0)
+size_flags_horizontal = 10
+auto_translate = false
+localize_numeral_system = false
+icon = ExtResource("2_yrlrc")
+flat = true
+alignment = 0
+icon_alignment = 2
+vertical_icon_alignment = 0
 
-[node name="HSlider" type="HSlider" parent="TabContainer/Juego/MarginContainer/ResolutionSettings/MusicVolumeContainer"]
-custom_minimum_size = Vector2(100, 10)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-min_value = -50.0
-max_value = 0.0
-value = -15.0
-rounded = true
-
-[node name="SFXVolume" type="Label" parent="TabContainer/Juego/MarginContainer/ResolutionSettings"]
-layout_mode = 2
-theme = ExtResource("1_txexu")
-text = "SFXVolume"
-
-[node name="SFXVolumeContainer" type="HBoxContainer" parent="TabContainer/Juego/MarginContainer/ResolutionSettings"]
-layout_mode = 2
-
-[node name="HSlider" type="HSlider" parent="TabContainer/Juego/MarginContainer/ResolutionSettings/SFXVolumeContainer"]
-custom_minimum_size = Vector2(100, 10)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-min_value = -50.0
-max_value = 0.0
-value = -15.0
-rounded = true
-
-[node name="MasterVolume4" type="Label" parent="TabContainer/Juego/MarginContainer/ResolutionSettings"]
-layout_mode = 2
-theme = ExtResource("1_txexu")
-text = "Modo de pantalla"
-
-[node name="MasterVolumeContainer4" type="HBoxContainer" parent="TabContainer/Juego/MarginContainer/ResolutionSettings"]
-layout_mode = 2
-
-[node name="HSlider" type="HSlider" parent="TabContainer/Juego/MarginContainer/ResolutionSettings/MasterVolumeContainer4"]
-custom_minimum_size = Vector2(100, 10)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-min_value = 30.0
-max_value = 120.0
-value = 120.0
-rounded = true
-
-[node name="Brightness" type="Label" parent="TabContainer/Juego/MarginContainer/ResolutionSettings"]
-layout_mode = 2
-theme = ExtResource("1_txexu")
-text = "Brillo"
-
-[node name="BrilloContainer" type="HBoxContainer" parent="TabContainer/Juego/MarginContainer/ResolutionSettings"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HSlider2" type="HSlider" parent="TabContainer/Juego/MarginContainer/ResolutionSettings/BrilloContainer"]
-custom_minimum_size = Vector2(100, 10)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-max_value = 2.0
-step = 0.1
-value = 1.0
-rounded = true
-
-[node name="cantidadFPS" type="Label" parent="TabContainer/Juego/MarginContainer/ResolutionSettings/BrilloContainer"]
-layout_mode = 2
-theme = ExtResource("1_txexu")
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
