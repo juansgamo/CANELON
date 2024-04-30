@@ -14,7 +14,7 @@ CheckButton/font_sizes/font_size = 30
 [node name="Ajustes" type="Popup"]
 title = "Ajustes"
 initial_position = 1
-size = Vector2i(900, 900)
+size = Vector2i(900, 520)
 visible = true
 content_scale_mode = 2
 content_scale_aspect = 1
@@ -23,7 +23,7 @@ script = ExtResource("1_yfqt6")
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -34,13 +34,12 @@ color = Color(0.32549, 0, 0.498039, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -625.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(0, -5)
 size_flags_horizontal = 10
 size_flags_vertical = 3
-current_tab = 2
 
 [node name="Video" type="TabBar" parent="TabContainer"]
 custom_minimum_size = Vector2(10, 10)
@@ -52,10 +51,10 @@ theme_override_font_sizes/font_size = 30
 custom_minimum_size = Vector2(10, 10)
 layout_direction = 2
 layout_mode = 1
-anchors_preset = -1
 offset_left = 10.0
+offset_top = 10.0
 offset_right = 590.0
-offset_bottom = 180.0
+offset_bottom = 290.0
 
 [node name="ResolutionSettings" type="GridContainer" parent="TabContainer/Video/MarginContainer"]
 layout_mode = 2
@@ -63,11 +62,14 @@ columns = 2
 
 [node name="Pantalla" type="Label" parent="TabContainer/Video/MarginContainer/ResolutionSettings"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("1_txexu")
 text = "Modo de pantalla"
 
 [node name="BtnPantalla" type="OptionButton" parent="TabContainer/Video/MarginContainer/ResolutionSettings"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_6nymb")
 item_count = 2
@@ -79,6 +81,8 @@ popup/item_1/id = 1
 
 [node name="FPS" type="Label" parent="TabContainer/Video/MarginContainer/ResolutionSettings"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("1_txexu")
 text = "Mostrar FPS"
 
@@ -86,6 +90,7 @@ text = "Mostrar FPS"
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = SubResource("Theme_11s61")
 alignment = 1
 expand_icon = true
@@ -93,13 +98,17 @@ language = "es"
 
 [node name="MaxFPS" type="Label" parent="TabContainer/Video/MarginContainer/ResolutionSettings"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("1_txexu")
 text = "Max FPS"
 
 [node name="MaxFPScontainer" type="HBoxContainer" parent="TabContainer/Video/MarginContainer/ResolutionSettings"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="HSlider" type="HSlider" parent="TabContainer/Video/MarginContainer/ResolutionSettings/MaxFPScontainer"]
+[node name="FPSSlider" type="HSlider" parent="TabContainer/Video/MarginContainer/ResolutionSettings/MaxFPScontainer"]
 custom_minimum_size = Vector2(100, 10)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -111,18 +120,23 @@ rounded = true
 
 [node name="cantidadFPS" type="Label" parent="TabContainer/Video/MarginContainer/ResolutionSettings/MaxFPScontainer"]
 layout_mode = 2
+size_flags_vertical = 1
 theme = ExtResource("1_txexu")
 text = "144"
 
 [node name="Brightness" type="Label" parent="TabContainer/Video/MarginContainer/ResolutionSettings"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("1_txexu")
 text = "Brillo"
 
 [node name="BrilloContainer" type="HBoxContainer" parent="TabContainer/Video/MarginContainer/ResolutionSettings"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="HSlider2" type="HSlider" parent="TabContainer/Video/MarginContainer/ResolutionSettings/BrilloContainer"]
+[node name="BrSlider" type="HSlider" parent="TabContainer/Video/MarginContainer/ResolutionSettings/BrilloContainer"]
 custom_minimum_size = Vector2(100, 10)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -132,11 +146,8 @@ step = 0.1
 value = 1.0
 rounded = true
 
-[node name="cantidadFPS" type="Label" parent="TabContainer/Video/MarginContainer/ResolutionSettings/BrilloContainer"]
-layout_mode = 2
-theme = ExtResource("1_txexu")
-
 [node name="Audio" type="TabBar" parent="TabContainer"]
+visible = false
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 theme = ExtResource("1_txexu")
@@ -147,8 +158,9 @@ custom_minimum_size = Vector2(10, 10)
 layout_direction = 2
 layout_mode = 1
 offset_left = 10.0
+offset_top = 5.0
 offset_right = 590.0
-offset_bottom = 300.0
+offset_bottom = 305.0
 
 [node name="ResolutionSettings" type="GridContainer" parent="TabContainer/Audio/MarginContainer"]
 layout_mode = 2
@@ -156,13 +168,17 @@ columns = 2
 
 [node name="MasterVolume" type="Label" parent="TabContainer/Audio/MarginContainer/ResolutionSettings"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
 theme = ExtResource("1_txexu")
 text = "MasterVolume"
 
 [node name="MasterVolumeContainer" type="HBoxContainer" parent="TabContainer/Audio/MarginContainer/ResolutionSettings"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="HSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/ResolutionSettings/MasterVolumeContainer"]
+[node name="MasterSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/ResolutionSettings/MasterVolumeContainer"]
 custom_minimum_size = Vector2(100, 10)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -179,8 +195,10 @@ text = "MusicVolume"
 
 [node name="MusicVolumeContainer" type="HBoxContainer" parent="TabContainer/Audio/MarginContainer/ResolutionSettings"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="HSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/ResolutionSettings/MusicVolumeContainer"]
+[node name="MusicSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/ResolutionSettings/MusicVolumeContainer"]
 custom_minimum_size = Vector2(100, 10)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -197,8 +215,10 @@ text = "SFXVolume"
 
 [node name="SFXVolumeContainer" type="HBoxContainer" parent="TabContainer/Audio/MarginContainer/ResolutionSettings"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="HSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/ResolutionSettings/SFXVolumeContainer"]
+[node name="SFXSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/ResolutionSettings/SFXVolumeContainer"]
 custom_minimum_size = Vector2(100, 10)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -208,48 +228,8 @@ max_value = 0.0
 value = -15.0
 rounded = true
 
-[node name="MasterVolume4" type="Label" parent="TabContainer/Audio/MarginContainer/ResolutionSettings"]
-layout_mode = 2
-theme = ExtResource("1_txexu")
-text = "Modo de pantalla"
-
-[node name="MasterVolumeContainer4" type="HBoxContainer" parent="TabContainer/Audio/MarginContainer/ResolutionSettings"]
-layout_mode = 2
-
-[node name="HSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/ResolutionSettings/MasterVolumeContainer4"]
-custom_minimum_size = Vector2(100, 10)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-min_value = 30.0
-max_value = 120.0
-value = 120.0
-rounded = true
-
-[node name="Brightness" type="Label" parent="TabContainer/Audio/MarginContainer/ResolutionSettings"]
-layout_mode = 2
-theme = ExtResource("1_txexu")
-text = "Brillo"
-
-[node name="BrilloContainer" type="HBoxContainer" parent="TabContainer/Audio/MarginContainer/ResolutionSettings"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HSlider2" type="HSlider" parent="TabContainer/Audio/MarginContainer/ResolutionSettings/BrilloContainer"]
-custom_minimum_size = Vector2(100, 10)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-max_value = 2.0
-step = 0.1
-value = 1.0
-rounded = true
-
-[node name="cantidadFPS" type="Label" parent="TabContainer/Audio/MarginContainer/ResolutionSettings/BrilloContainer"]
-layout_mode = 2
-theme = ExtResource("1_txexu")
-
 [node name="Juego" type="TabBar" parent="TabContainer"]
+visible = false
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 theme = ExtResource("1_txexu")
@@ -259,24 +239,30 @@ theme_override_font_sizes/font_size = 30
 custom_minimum_size = Vector2(10, 10)
 layout_direction = 2
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 10.0
-offset_right = 590.0
-offset_bottom = 300.0
+offset_top = 80.0
+offset_right = -310.0
+offset_bottom = -309.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ResolutionSettings" type="GridContainer" parent="TabContainer/Juego/MarginContainer"]
 layout_mode = 2
-columns = 2
 
 [node name="MouseSensitivity" type="Label" parent="TabContainer/Juego/MarginContainer/ResolutionSettings"]
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
 theme = ExtResource("1_txexu")
-text = "Sensibilidad 
-del ratón"
+text = "Sensibilidad del ratón"
 
 [node name="MouseSensitivitycONTAINER" type="HBoxContainer" parent="TabContainer/Juego/MarginContainer/ResolutionSettings"]
 layout_mode = 2
 
-[node name="HSlider" type="HSlider" parent="TabContainer/Juego/MarginContainer/ResolutionSettings/MouseSensitivitycONTAINER"]
+[node name="SenSlider" type="HSlider" parent="TabContainer/Juego/MarginContainer/ResolutionSettings/MouseSensitivitycONTAINER"]
 custom_minimum_size = Vector2(100, 10)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -310,4 +296,15 @@ alignment = 0
 icon_alignment = 2
 vertical_icon_alignment = 0
 
+[connection signal="item_selected" from="TabContainer/Video/MarginContainer/ResolutionSettings/BtnPantalla" to="." method="_on_btn_pantalla_item_selected"]
+[connection signal="toggled" from="TabContainer/Video/MarginContainer/ResolutionSettings/BtnFPS" to="." method="_on_btn_fps_toggled"]
+[connection signal="value_changed" from="TabContainer/Video/MarginContainer/ResolutionSettings/MaxFPScontainer/FPSSlider" to="." method="_on_fps_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Video/MarginContainer/ResolutionSettings/MaxFPScontainer/FPSSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Video/MarginContainer/ResolutionSettings/BrilloContainer/BrSlider" to="." method="_on_br_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Video/MarginContainer/ResolutionSettings/BrilloContainer/BrSlider" to="." method="_on_h_slider_2_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/ResolutionSettings/MasterVolumeContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/ResolutionSettings/MasterVolumeContainer/MasterSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/ResolutionSettings/MusicVolumeContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/ResolutionSettings/SFXVolumeContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Juego/MarginContainer/ResolutionSettings/MouseSensitivitycONTAINER/SenSlider" to="." method="_on_sen_slider_value_changed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

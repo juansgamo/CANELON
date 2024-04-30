@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bn8w84bdj80sd"]
+[gd_scene load_steps=8 format=3 uid="uid://bn8w84bdj80sd"]
 
 [ext_resource type="Script" path="res://MenuMultijugador.gd" id="1_5kfm8"]
 [ext_resource type="Texture2D" uid="uid://bfsokng04xgqk" path="res://images/FONDO2.png" id="2_1dqrm"]
 [ext_resource type="StyleBox" uid="uid://s0vig18r7r8a" path="res://styles/boton_hover.tres" id="3_kbsgy"]
 [ext_resource type="StyleBox" uid="uid://cl2i0rp6x7e64" path="res://styles/boton.tres" id="4_121h8"]
 [ext_resource type="StyleBox" uid="uid://cq0u5xjk2tq46" path="res://styles/boton_press.tres" id="5_nvnql"]
+[ext_resource type="PackedScene" uid="uid://0vbxuajqck1q" path="res://scenes/FpsLabel.tscn" id="6_v7nb5"]
 
 [sub_resource type="Theme" id="Theme_skr3f"]
 Button/colors/font_color = Color(0.745098, 0.588235, 1, 1)
@@ -39,6 +40,7 @@ theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 723.0
 offset_top = 489.0
 offset_right = 1023.0
@@ -50,7 +52,18 @@ layout_mode = 2
 theme = SubResource("Theme_skr3f")
 text = "Jugar"
 
+[node name="FpsLabel" parent="VBoxContainer/Jugar" instance=ExtResource("6_v7nb5")]
+layout_mode = 0
+offset_left = -431.17
+offset_top = -222.205
+offset_right = -402.17
+offset_bottom = -199.205
+scale = Vector2(3, 3)
+
 [node name="Volver" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_skr3f")
 text = "Volver"
+
+[connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Volver" to="." method="_on_volver_pressed"]

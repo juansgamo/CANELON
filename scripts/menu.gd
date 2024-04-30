@@ -15,3 +15,6 @@ func _on_modo_individual_pressed():
 
 func _on_modo_multijugador_pressed():
 	get_tree().change_scene_to_packed(menu_multijugador)
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")
