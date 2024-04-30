@@ -28,13 +28,13 @@ func _on_btn_pantalla_item_selected(index):
 	GlobalSettings.change_display_mode(index)
 
 func _on_btn_fps_toggled(toggled_on):
-	pass # Replace with function body.
+	GlobalSettings.toggle_fps_display(toggled_on)
 
 func _on_fps_slider_value_changed(value):
-	pass # Replace with function body.
+	GlobalSettings.set_max_fps(value)
 
 func _on_br_slider_value_changed(value):
-	pass # Replace with function body.
+	GlobalSettings.update_brightness(value)
 
 
 func _on_master_slider_value_changed(value):
