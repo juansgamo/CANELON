@@ -92,6 +92,25 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_11s61")
+button_pressed = true
+alignment = 1
+expand_icon = true
+language = "es"
+
+[node name="VSync" type="Label" parent="TabContainer/Video/MarginContainer/ResolutionSettings"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_txexu")
+text = "VSync"
+
+[node name="BtnVsync" type="CheckButton" parent="TabContainer/Video/MarginContainer/ResolutionSettings"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_11s61")
+button_pressed = true
 alignment = 1
 expand_icon = true
 language = "es"
@@ -298,12 +317,10 @@ vertical_icon_alignment = 0
 
 [connection signal="item_selected" from="TabContainer/Video/MarginContainer/ResolutionSettings/BtnPantalla" to="." method="_on_btn_pantalla_item_selected"]
 [connection signal="toggled" from="TabContainer/Video/MarginContainer/ResolutionSettings/BtnFPS" to="." method="_on_btn_fps_toggled"]
+[connection signal="toggled" from="TabContainer/Video/MarginContainer/ResolutionSettings/BtnVsync" to="." method="_on_btn_vsync_toggled"]
 [connection signal="value_changed" from="TabContainer/Video/MarginContainer/ResolutionSettings/MaxFPScontainer/FPSSlider" to="." method="_on_fps_slider_value_changed"]
-[connection signal="value_changed" from="TabContainer/Video/MarginContainer/ResolutionSettings/MaxFPScontainer/FPSSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/Video/MarginContainer/ResolutionSettings/BrilloContainer/BrSlider" to="." method="_on_br_slider_value_changed"]
-[connection signal="value_changed" from="TabContainer/Video/MarginContainer/ResolutionSettings/BrilloContainer/BrSlider" to="." method="_on_h_slider_2_value_changed"]
 [connection signal="value_changed" from="TabContainer/Audio/MarginContainer/ResolutionSettings/MasterVolumeContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
-[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/ResolutionSettings/MasterVolumeContainer/MasterSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/Audio/MarginContainer/ResolutionSettings/MusicVolumeContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/Audio/MarginContainer/ResolutionSettings/SFXVolumeContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/Juego/MarginContainer/ResolutionSettings/MouseSensitivitycONTAINER/SenSlider" to="." method="_on_sen_slider_value_changed"]
