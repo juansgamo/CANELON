@@ -1,9 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://d808h8uawksa"]
+[gd_scene load_steps=10 format=3 uid="uid://d808h8uawksa"]
 
 [ext_resource type="Script" path="res://scripts/carreras.gd" id="1_2ivje"]
 [ext_resource type="Texture2D" uid="uid://mhoarsi0j4yl" path="res://images/fondoCarreras.jpg" id="2_nly1x"]
 [ext_resource type="Texture2D" uid="uid://bell7svqg3dm4" path="res://images/cocheRojo.png" id="3_pt1dq"]
 [ext_resource type="Texture2D" uid="uid://bsbfmin5x781u" path="res://images/cocheVerde.png" id="4_g0w15"]
+[ext_resource type="StyleBox" uid="uid://cemrqrxlxm86h" path="res://styles/rojo.tres" id="5_8p47p"]
+[ext_resource type="StyleBox" uid="uid://b80oucaun4527" path="res://styles/verde.tres" id="6_dry7u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cr8s"]
+size = Vector2(770.331, 354.162)
+
+[sub_resource type="Theme" id="Theme_psyfr"]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/styles/normal = ExtResource("5_8p47p")
+
+[sub_resource type="Theme" id="Theme_r5vcf"]
+Label/styles/normal = ExtResource("6_dry7u")
 
 [node name="GameWorld" type="Node2D"]
 script = ExtResource("1_2ivje")
@@ -13,12 +25,50 @@ position = Vector2(960, 540)
 scale = Vector2(1.6, 3)
 texture = ExtResource("2_nly1x")
 
-[node name="Car1" type="Sprite2D" parent="."]
+[node name="CAR1" type="Area2D" parent="."]
+position = Vector2(-7, 109)
+
+[node name="Car1" type="Sprite2D" parent="CAR1"]
 position = Vector2(54.2908, 219.363)
 scale = Vector2(0.0709969, 0.0816982)
 texture = ExtResource("3_pt1dq")
 
-[node name="Car2" type="Sprite2D" parent="."]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CAR1"]
+position = Vector2(55, 221)
+scale = Vector2(0.129062, 0.129884)
+shape = SubResource("RectangleShape2D_7cr8s")
+
+[node name="CAR2" type="Area2D" parent="."]
+
+[node name="Car2" type="Sprite2D" parent="CAR2"]
 position = Vector2(54.375, 745.218)
 scale = Vector2(0.129062, 0.129884)
 texture = ExtResource("4_g0w15")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CAR2"]
+position = Vector2(53.2898, 745)
+scale = Vector2(0.129062, 0.129884)
+shape = SubResource("RectangleShape2D_7cr8s")
+
+[node name="Label1" type="Label" parent="."]
+top_level = true
+offset_left = 62.0
+offset_top = 99.0
+offset_right = 199.0
+offset_bottom = 180.0
+theme = SubResource("Theme_psyfr")
+theme_override_font_sizes/font_size = 50
+text = "ROJO"
+
+[node name="Label2" type="Label" parent="."]
+top_level = true
+offset_left = 62.0
+offset_top = 902.0
+offset_right = 199.0
+offset_bottom = 983.0
+theme = SubResource("Theme_r5vcf")
+theme_override_font_sizes/font_size = 50
+text = "VERD"
+
+[connection signal="body_entered" from="CAR1" to="." method="_on_car_1_body_entered"]
+[connection signal="body_entered" from="CAR2" to="." method="_on_car_2_body_entered"]
