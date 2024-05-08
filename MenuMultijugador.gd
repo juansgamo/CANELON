@@ -7,4 +7,4 @@ func _on_volver_pressed():
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 
 func _on_jugar_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/carreras.tscn")

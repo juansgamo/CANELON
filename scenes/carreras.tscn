@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://d808h8uawksa"]
+
+[ext_resource type="Script" path="res://scripts/carreras.gd" id="1_2ivje"]
+[ext_resource type="Texture2D" uid="uid://mhoarsi0j4yl" path="res://images/fondoCarreras.jpg" id="2_nly1x"]
+[ext_resource type="Texture2D" uid="uid://bell7svqg3dm4" path="res://images/cocheRojo.png" id="3_pt1dq"]
+[ext_resource type="Texture2D" uid="uid://bsbfmin5x781u" path="res://images/cocheVerde.png" id="4_g0w15"]
+
+[node name="GameWorld" type="Node2D"]
+script = ExtResource("1_2ivje")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(1.6, 3)
+texture = ExtResource("2_nly1x")
+
+[node name="Car1" type="Sprite2D" parent="."]
+position = Vector2(54.2908, 219.363)
+scale = Vector2(0.0709969, 0.0816982)
+texture = ExtResource("3_pt1dq")
+
+[node name="Car2" type="Sprite2D" parent="."]
+position = Vector2(54.375, 745.218)
+scale = Vector2(0.129062, 0.129884)
+texture = ExtResource("4_g0w15")
