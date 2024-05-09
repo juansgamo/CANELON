@@ -31,7 +31,7 @@ func _process(delta):
 		if $CAR1.position.x > get_viewport_rect().end.x:
 			$CAR1.position.x = 0
 			car1_score += 1
-			$Label1.text = "Rojo: " + str(car1_score)
+			$Label1.text = "Rojo:  " + str(car1_score)
 			if car1_score >= 5:
 				finish()
 	if speed2 > 0:

@@ -58,7 +58,7 @@ offset_right = 199.0
 offset_bottom = 180.0
 theme = SubResource("Theme_psyfr")
 theme_override_font_sizes/font_size = 50
-text = "ROJO"
+text = "Rojo:  0"
 
 [node name="Label2" type="Label" parent="."]
 top_level = true
@@ -68,7 +68,7 @@ offset_right = 199.0
 offset_bottom = 983.0
 theme = SubResource("Theme_r5vcf")
 theme_override_font_sizes/font_size = 50
-text = "VERD"
+text = "Verde: 0"
 
 [connection signal="body_entered" from="CAR1" to="." method="_on_car_1_body_entered"]
 [connection signal="body_entered" from="CAR2" to="." method="_on_car_2_body_entered"]
