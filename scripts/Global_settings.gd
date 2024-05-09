@@ -52,11 +52,3 @@ func update_mouse_sens(value: float) -> void:
 	Save.game_data.mouse_sens = value
 	Save.save_data()
 
-
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

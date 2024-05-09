@@ -1,94 +1,54 @@
-[gd_scene load_steps=12 format=3 uid="uid://cpem1bu4c87ks"]
+[gd_scene load_steps=8 format=3 uid="uid://npmesfai7xq1"]
 
-[ext_resource type="Script" path="res://Wall.gd" id="1_2c0sf"]
-[ext_resource type="Script" path="res://ParallaxBackground.gd" id="2_m8c2q"]
-[ext_resource type="Texture2D" uid="uid://i8ywr671uwyu" path="res://imagenes/db.webp" id="3_6h7nj"]
-[ext_resource type="Texture2D" uid="uid://d1lu5tab5q1j2" path="res://imagenes/kameha.png" id="4_cg13u"]
-[ext_resource type="Texture2D" uid="uid://svk0h2sdeeif" path="res://imagenes/ESFERA.png" id="4_j1hpb"]
+[ext_resource type="Script" path="res://scripts/wall.gd" id="1_71c8w"]
+[ext_resource type="PackedScene" uid="uid://d1k85m5uuvcwo" path="res://scenes/parallax_background2.tscn" id="1_uxwm0"]
+[ext_resource type="Texture2D" uid="uid://bm2mkr2qruksp" path="res://images/tronco.png" id="2_3tdy2"]
+[ext_resource type="Texture2D" uid="uid://b0hftfvqrkygp" path="res://images/fondo_flappy.png" id="4_nm1yh"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfkix"]
-size = Vector2(120, 423)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jeogc"]
+size = Vector2(31.25, 161)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jwbyw"]
-atlas = ExtResource("4_cg13u")
-region = Rect2(0, 0, 1290, 327)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4ynx"]
+size = Vector2(36.25, 150.5)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bgit4"]
-atlas = ExtResource("4_cg13u")
-region = Rect2(1290, 0, 1290, 327)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yd0va"]
-atlas = ExtResource("4_cg13u")
-region = Rect2(2580, 0, 1290, 327)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_531ba"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jwbyw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bgit4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yd0va")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mu8xu"]
-size = Vector2(1, 334)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_sbnqe"]
+a = Vector2(-54, 495)
+b = Vector2(1867, 495)
 
 [node name="Wall" type="Area2D"]
-position = Vector2(1242, 599)
-script = ExtResource("1_2c0sf")
+script = ExtResource("1_71c8w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 144)
-shape = SubResource("RectangleShape2D_tfkix")
+position = Vector2(1991, 85)
+shape = SubResource("RectangleShape2D_jeogc")
 
-[node name="Kame" type="AnimatedSprite2D" parent="CollisionShape2D"]
-position = Vector2(0, -9)
-rotation = -1.5708
-scale = Vector2(0.3482, 0.448649)
-sprite_frames = SubResource("SpriteFrames_531ba")
-frame_progress = 0.0690552
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(-2, -0.5)
+rotation = 4.71239
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_3tdy2")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-0.999998, -617)
-rotation = -3.14159
-shape = SubResource("RectangleShape2D_tfkix")
+position = Vector2(1995, 454)
+shape = SubResource("RectangleShape2D_g4ynx")
 
-[node name="Kame1" type="AnimatedSprite2D" parent="CollisionShape2D2"]
-position = Vector2(1.99998, -11)
-rotation = -1.5708
-scale = Vector2(0.340814, 0.483249)
-sprite_frames = SubResource("SpriteFrames_531ba")
-frame_progress = 0.68903
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D2"]
+position = Vector2(3, 0.75)
+rotation = 1.5708
+scale = Vector2(0.25, 0.248)
+texture = ExtResource("2_3tdy2")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-script = ExtResource("2_m8c2q")
+[node name="ParallaxBackground2" parent="." instance=ExtResource("1_uxwm0")]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground2"]
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(484, 423)
-scale = Vector2(2.04752, 2.41268)
-texture = ExtResource("3_6h7nj")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer2"]
+position = Vector2(961, 540.5)
+scale = Vector2(1, 0.770833)
+texture = ExtResource("4_nm1yh")
 
-[node name="ScoredArea" type="Area2D" parent="."]
-position = Vector2(-13, -225)
-
-[node name="CollisionScored" type="CollisionShape2D" parent="ScoredArea"]
-position = Vector2(-16, -13)
-shape = SubResource("RectangleShape2D_mu8xu")
-
-[node name="Esfera" type="Sprite2D" parent="ScoredArea"]
-position = Vector2(14, -8)
-scale = Vector2(0.13, 0.12)
-texture = ExtResource("4_j1hpb")
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(54, 45)
+shape = SubResource("SegmentShape2D_sbnqe")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_entered" from="ScoredArea" to="." method="_on_scored_area_body_entered"]
