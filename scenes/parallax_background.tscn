@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck2krdxor5a6b"]
+[gd_scene load_steps=4 format=3 uid="uid://ck2krdxor5a6b"]
 
 [ext_resource type="Script" path="res://scripts/ParallaxBackground.gd" id="1_prw5i"]
-[ext_resource type="Texture2D" uid="uid://bfsokng04xgqk" path="res://images/FONDO2.png" id="2_5bjsk"]
+
+[sub_resource type="Gradient" id="Gradient_fspek"]
+colors = PackedColorArray(0.869003, 0.944196, 0.435402, 1, 0.933333, 0.529412, 0.423529, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_81hb5"]
+gradient = SubResource("Gradient_fspek")
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 script = ExtResource("1_prw5i")
@@ -10,7 +15,7 @@ script = ExtResource("1_prw5i")
 motion_mirroring = Vector2(10000, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(958, 537)
-scale = Vector2(3.07348, 2.28151)
-texture = ExtResource("2_5bjsk")
+position = Vector2(961, 538.5)
+scale = Vector2(32.25, 17.9844)
+texture = SubResource("GradientTexture2D_81hb5")
 region_rect = Rect2(100, 100, 1000, 1000)

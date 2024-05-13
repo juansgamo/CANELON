@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dh0x1ojbm4bx0" path="res://images/quit.png" id="2_yrlrc"]
 
 [sub_resource type="Theme" id="Theme_6nymb"]
-OptionButton/colors/font_color = Color(0.694118, 0.478431, 0.988235, 1)
+OptionButton/colors/font_color = Color(0.831373, 0.34902, 0.00784314, 1)
 
 [sub_resource type="Theme" id="Theme_11s61"]
 CheckButton/constants/check_v_offset = 0
@@ -28,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color(0.32549, 0, 0.498039, 1)
+color = Color(0.458824, 0.313726, 0.235294, 1)
 
 [node name="TabContainer" type="TabContainer" parent="."]
 anchors_preset = 15

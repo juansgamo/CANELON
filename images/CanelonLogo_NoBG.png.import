@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5rj5qo052ewr"
-path="res://.godot/imported/CANELON.png-7324cad4612f0aa31c86f7903ed11096.ctex"
+uid="uid://duvdgb5x7v3i8"
+path="res://.godot/imported/CanelonLogo_NoBG.png-af5f4882eb008f0c90e39c9a1568ed33.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/CANELON.png"
-dest_files=["res://.godot/imported/CANELON.png-7324cad4612f0aa31c86f7903ed11096.ctex"]
+source_file="res://images/CanelonLogo_NoBG.png"
+dest_files=["res://.godot/imported/CanelonLogo_NoBG.png-af5f4882eb008f0c90e39c9a1568ed33.ctex"]
 
 [params]
 
