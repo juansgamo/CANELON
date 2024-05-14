@@ -11,9 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://duvdgb5x7v3i8" path="res://images/CanelonLogo_NoBG.png" id="9_ln2xq"]
 
 [sub_resource type="Theme" id="Theme_n4pca"]
-Button/colors/font_color = Color(0.745098, 0.588235, 1, 1)
-Button/colors/font_hover_color = Color(0.627451, 0.309804, 1, 1)
-Button/colors/font_pressed_color = Color(0.388235, 0, 0.678431, 1)
+Button/colors/font_color = Color(0.964706, 0.882353, 0.8, 1)
+Button/colors/font_hover_color = Color(0.909804, 0.733333, 0.552941, 1)
+Button/colors/font_pressed_color = Color(0.698039, 0.498039, 0.286275, 1)
 Button/styles/hover = ExtResource("1_pnk5d")
 Button/styles/normal = ExtResource("2_sd4ws")
 Button/styles/pressed = ExtResource("3_f0mke")
@@ -37,15 +37,10 @@ offset_right = 1023.0
 offset_bottom = 1234.0
 scale = Vector2(1.49361, 2.27268)
 
-[node name="Modo_Individual" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme = SubResource("Theme_n4pca")
-text = "Modo individual"
-
 [node name="Modo_Multijugador" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_n4pca")
-text = "Modo Multijugador
+text = "Jugar
 "
 
 [node name="Ajustes" type="Button" parent="VBoxContainer"]
@@ -87,7 +82,6 @@ offset_bottom = 993.995
 position = Vector2(960, 270)
 texture = ExtResource("9_ln2xq")
 
-[connection signal="pressed" from="VBoxContainer/Modo_Individual" to="." method="_on_modo_individual_pressed"]
 [connection signal="pressed" from="VBoxContainer/Modo_Multijugador" to="." method="_on_modo_multijugador_pressed"]
 [connection signal="pressed" from="VBoxContainer/Ajustes" to="." method="_on_ajustes_pressed"]
 [connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]

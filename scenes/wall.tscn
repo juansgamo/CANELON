@@ -19,23 +19,23 @@ b = Vector2(1867, 495)
 script = ExtResource("1_71c8w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1991, 85)
+position = Vector2(2028, 252)
 shape = SubResource("RectangleShape2D_jeogc")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-position = Vector2(-2, -0.5)
+position = Vector2(-0.999949, 1)
 rotation = 4.71239
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.281944, 0.385478)
 texture = ExtResource("2_3tdy2")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(1995, 454)
+position = Vector2(2037, 808)
 shape = SubResource("RectangleShape2D_g4ynx")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D2"]
-position = Vector2(3, 0.75)
+position = Vector2(3.00002, -6.99999)
 rotation = 1.5708
-scale = Vector2(0.25, 0.248)
+scale = Vector2(0.285547, 0.411507)
 texture = ExtResource("2_3tdy2")
 
 [node name="ParallaxBackground2" parent="." instance=ExtResource("1_uxwm0")]

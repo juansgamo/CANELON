@@ -15,7 +15,7 @@ func _ready():
 
 func finish():
 	print("Game Over")
-	get_tree().change_scene_to_file("res://scenes/menu_multijugador.tscn")
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 
 func _input(event):
 	if event.is_action_pressed("ui_right"):

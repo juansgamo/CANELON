@@ -13,11 +13,12 @@ func _on_timer_timeout():
 
 func spawn_wall():
 	var this_wall = WALL.instantiate()
-	this_wall.death.connect(death)
+	this_wall.death.connect(self._on_wall_death)  # Conecta la señal de muerte
 	add_child(this_wall)
-	this_wall.position.y = randf_range(100,800)
+	this_wall.position.y = randf_range(-500, 500)
 
-func death():
+func _on_wall_death():
 	print("Muerte")
-	get_tree().call_deferred("reload_current_scene")
-	get_tree().change_scene_to_file("res://scenes/menu_multijugador.tscn")
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")
+
+

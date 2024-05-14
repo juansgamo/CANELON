@@ -19,7 +19,7 @@ func _physics_process(delta):
 
 	# Comprobar si el nodo está fuera del borde superior o inferior
 	if position.y > (screen_size.y + BORDER_THRESHOLD) or position.y < -BORDER_THRESHOLD:
-		get_tree().change_scene_to_file("res://scenes/menu_multijugador.tscn")
+		get_tree().change_scene_to_file("res://scenes/menu.tscn")
 		
 	move_and_slide()
 	

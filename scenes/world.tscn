@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://b1bh5xgagbigh"]
+[gd_scene load_steps=20 format=3 uid="uid://b1bh5xgagbigh"]
 
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_6gobm"]
 [ext_resource type="Script" path="res://scripts/p_rojo.gd" id="1_o01bs"]
 [ext_resource type="Texture2D" uid="uid://fwakh2bqaf0c" path="res://images/p.rojo (1).png" id="3_qyf1i"]
 [ext_resource type="Texture2D" uid="uid://c0vfq0pbuav32" path="res://images/p.rojo (2).png" id="3_rat01"]
@@ -15,7 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://cgj3wp5vw3lca" path="res://sounds/jump2.mp3" id="12_4x61j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkkyd"]
-size = Vector2(38, 35)
+size = Vector2(35, 29.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1ri60"]
 animations = [{
@@ -58,13 +59,14 @@ Label/styles/normal = ExtResource("4_lw2ie")
 Label/styles/normal = ExtResource("10_00cmq")
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_6gobm")
 
 [node name="P_ROJO" type="CharacterBody2D" parent="."]
 position = Vector2(229, 219)
 script = ExtResource("1_o01bs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="P_ROJO"]
-position = Vector2(7, -24)
+position = Vector2(5.5, -26.75)
 shape = SubResource("RectangleShape2D_nkkyd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="P_ROJO"]
@@ -120,4 +122,8 @@ stream = ExtResource("12_4x61j")
 [node name="fondo" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_nehl6")
 
+[node name="CountdownTimer" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="timeout" from="WallManager/Timer" to="WallManager" method="_on_timer_timeout"]
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_timer_timeout"]
