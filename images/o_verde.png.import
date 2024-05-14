@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmfqx8uq6rrdw"
-path="res://.godot/imported/kameha.png-0637bbbefc8a587a9b1571c428df8038.ctex"
+uid="uid://bcxveakr7it40"
+path="res://.godot/imported/o_verde.png-cd2e2c7377025b3e3b4b056aa447b988.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/kameha.png"
-dest_files=["res://.godot/imported/kameha.png-0637bbbefc8a587a9b1571c428df8038.ctex"]
+source_file="res://images/o_verde.png"
+dest_files=["res://.godot/imported/o_verde.png-cd2e2c7377025b3e3b4b056aa447b988.ctex"]
 
 [params]
 

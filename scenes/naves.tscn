@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://pi6yrfgku4qm"]
+
+[ext_resource type="Script" path="res://scripts/naves.gd" id="1_x6phl"]
+[ext_resource type="Texture2D" uid="uid://djdtycuhu0sj5" path="res://images/espacio.jpg" id="2_bwkkh"]
+[ext_resource type="Texture2D" uid="uid://dhab6hmj1xxib" path="res://images/o_rojo.png" id="3_ihc0t"]
+[ext_resource type="Texture2D" uid="uid://bcxveakr7it40" path="res://images/o_verde.png" id="4_t3har"]
+[ext_resource type="PackedScene" uid="uid://crce67x4evw0j" path="res://scenes/meteorito.tscn" id="5_g3t0n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k02qi"]
+radius = 74.6726
+
+[node name="naves" type="Node2D"]
+script = ExtResource("1_x6phl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(957.5, 540.5)
+scale = Vector2(1.01094, 0.855468)
+texture = ExtResource("2_bwkkh")
+
+[node name="o_rojo" type="Area2D" parent="."]
+position = Vector2(120, 900)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="o_rojo"]
+position = Vector2(10, -28)
+shape = SubResource("CircleShape2D_k02qi")
+
+[node name="Sprite2D" type="Sprite2D" parent="o_rojo"]
+position = Vector2(6, 102)
+texture = ExtResource("3_ihc0t")
+
+[node name="o_verde" type="Area2D" parent="."]
+position = Vector2(1080, 900)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="o_verde"]
+position = Vector2(-6, -14)
+shape = SubResource("CircleShape2D_k02qi")
+
+[node name="Sprite2D" type="Sprite2D" parent="o_verde"]
+texture = ExtResource("4_t3har")
+
+[node name="meteorito" parent="." instance=ExtResource("5_g3t0n")]

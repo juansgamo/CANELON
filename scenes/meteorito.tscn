@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://crce67x4evw0j"]
+
+[ext_resource type="Texture2D" uid="uid://dsj2wvh16plc6" path="res://images/meteorito.png" id="1_on3er"]
+[ext_resource type="Script" path="res://scripts/meteorito.gd" id="1_x2nao"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc026"]
+atlas = ExtResource("1_on3er")
+region = Rect2(45, 0, 129, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xspn8"]
+atlas = ExtResource("1_on3er")
+region = Rect2(174, 0, 129, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_diw0v"]
+atlas = ExtResource("1_on3er")
+region = Rect2(303, 0, 129, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb6o4"]
+atlas = ExtResource("1_on3er")
+region = Rect2(432, 0, 129, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scsa7"]
+atlas = ExtResource("1_on3er")
+region = Rect2(561, 0, 129, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0pg8"]
+atlas = ExtResource("1_on3er")
+region = Rect2(690, 0, 129, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnc4o"]
+atlas = ExtResource("1_on3er")
+region = Rect2(819, 0, 129, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwacv"]
+atlas = ExtResource("1_on3er")
+region = Rect2(948, 0, 129, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_njg62"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc026")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xspn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_diw0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pb6o4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scsa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0pg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnc4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwacv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cv1kc"]
+radius = 24.0832
+
+[node name="meteorito" type="Area2D"]
+position = Vector2(933, -97)
+script = ExtResource("1_x2nao")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -4.57764e-05)
+rotation = -0.728234
+sprite_frames = SubResource("SpriteFrames_njg62")
+frame_progress = 0.753632
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 44.0001)
+rotation = -0.820792
+shape = SubResource("CircleShape2D_cv1kc")

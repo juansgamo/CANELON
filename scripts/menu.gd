@@ -24,7 +24,7 @@ func _on_ajustes_pressed():
 		#get_tree().change_scene_to_file("res://scenes/world.tscn")
 
 func _on_modo_multijugador_pressed():
-	get_tree().change_scene_to_file("res://scenes/world.tscn")
+	get_tree().change_scene_to_file("res://scenes/naves.tscn")
 	
 func _on_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")

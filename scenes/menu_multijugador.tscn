@@ -1,10 +1,30 @@
 [gd_scene load_steps=8 format=3 uid="uid://bn8w84bdj80sd"]
 
-[ext_resource type="Script" path="res://MenuMultijugador.gd" id="1_5kfm8"]
 [ext_resource type="StyleBox" uid="uid://s0vig18r7r8a" path="res://styles/boton_hover.tres" id="3_kbsgy"]
 [ext_resource type="StyleBox" uid="uid://cl2i0rp6x7e64" path="res://styles/boton.tres" id="4_121h8"]
 [ext_resource type="StyleBox" uid="uid://cq0u5xjk2tq46" path="res://styles/boton_press.tres" id="5_nvnql"]
 [ext_resource type="PackedScene" uid="uid://0vbxuajqck1q" path="res://scenes/FpsLabel.tscn" id="6_v7nb5"]
+
+[sub_resource type="GDScript" id="GDScript_klo1g"]
+script/source = "extends Control
+
+# func _ready():
+	# $menufondo.play()
+
+func _on_volver_pressed():
+	get_tree().change_scene_to_file(\"res://scenes/menu.tscn\")
+
+func _on_jugar_pressed():
+	var random_option = randi_range(0, 1)  # Genera un número aleatorio entre 0 y 1
+
+	if random_option == 0:
+		get_tree().change_scene_to_file(\"res://scenes/carreras.tscn\")
+	elif random_option == 1:
+		get_tree().change_scene_to_file(\"res://scenes/world.tscn\")
+
+#func _on_jugar_pressed():
+	#get_tree().change_scene_to_file(\"res://scenes/world.tscn\")
+"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3glwo"]
 load_path = "res://.godot/imported/FONDO2.png-3731cb8b02acef3724dac8125fb26f5a.ctex"
@@ -24,7 +44,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_5kfm8")
+script = SubResource("GDScript_klo1g")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
