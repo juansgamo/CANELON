@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://dyysq6kirfdwh"]
+
+[ext_resource type="Texture2D" uid="uid://fqk8a23ggwdm" path="res://images/pong.png" id="1_kohkx"]
+[ext_resource type="StyleBox" uid="uid://cemrqrxlxm86h" path="res://styles/rojo.tres" id="2_baw8w"]
+[ext_resource type="StyleBox" uid="uid://b80oucaun4527" path="res://styles/verde.tres" id="3_fnn2o"]
+[ext_resource type="Script" path="res://scripts/PlayerPong.gd" id="4_onnsu"]
+[ext_resource type="Script" path="res://scripts/PlayerPong2.gd" id="5_ypi2a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ys8av"]
+size = Vector2(1922, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6drj3"]
+size = Vector2(1919, 34)
+
+[sub_resource type="Theme" id="Theme_wswj3"]
+Label/styles/normal = ExtResource("2_baw8w")
+
+[sub_resource type="Theme" id="Theme_nsxkf"]
+Label/styles/normal = ExtResource("3_fnn2o")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_puf4e"]
+size = Vector2(30, 128)
+
+[node name="Pong" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(962, 543.625)
+scale = Vector2(1.66119, 1.59168)
+texture = ExtResource("1_kohkx")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(960, 25)
+shape = SubResource("RectangleShape2D_ys8av")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(599, 217)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(362.5, 846)
+shape = SubResource("RectangleShape2D_6drj3")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 804.0
+offset_top = 60.0
+offset_right = 904.0
+offset_bottom = 130.0
+theme = SubResource("Theme_wswj3")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 1007.0
+offset_top = 61.0
+offset_right = 1107.0
+offset_bottom = 131.0
+theme = SubResource("Theme_nsxkf")
+
+[node name="PlayerPong" type="CharacterBody2D" parent="."]
+position = Vector2(64, 516)
+script = ExtResource("4_onnsu")
+
+[node name="ColorRect" type="ColorRect" parent="PlayerPong"]
+offset_left = -17.0
+offset_top = -64.0
+offset_right = 13.0
+offset_bottom = 65.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPong"]
+position = Vector2(-2, 1)
+shape = SubResource("RectangleShape2D_puf4e")
+
+[node name="PlayerPong2" type="CharacterBody2D" parent="."]
+position = Vector2(1864, 543)
+script = ExtResource("5_ypi2a")
+
+[node name="ColorRect" type="ColorRect" parent="PlayerPong2"]
+offset_left = -17.0
+offset_top = -64.0
+offset_right = 13.0
+offset_bottom = 65.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPong2"]
+position = Vector2(-2, 1)
+shape = SubResource("RectangleShape2D_puf4e")
