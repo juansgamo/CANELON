@@ -84,3 +84,5 @@ frame_progress = 0.753632
 position = Vector2(8, 44.0001)
 rotation = -0.820792
 shape = SubResource("CircleShape2D_cv1kc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

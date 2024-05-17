@@ -9,10 +9,13 @@ var o2_score = 0  # Contador para la nave verde
 var is_o1_stopped = false
 var is_o2_stopped = false
 
+var last_speed1 = 200  # Para almacenar la última velocidad antes de detenerse
+var last_speed2 = -200
+
 var meteorito_speed = 1  # Velocidad de caída de los meteoritos
 var meteorito_scene = preload("res://scenes/meteorito.tscn")
 var meteorito_spawn_timer = 0
-var meteorito_spawn_interval = 2  # Intervalo de tiempo entre la aparición de meteoritos
+var meteorito_spawn_interval = 1.5  # Intervalo de tiempo entre la aparición de meteoritos
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -22,12 +25,12 @@ func _process(delta):
 
 	# Detener y cambiar dirección de la nave roja cuando llegue al borde izquierdo
 	if $o_rojo.position.x <= 0:
-		speed1 = abs(speed1)  # Cambiar dirección
+		speed1 = abs(last_speed1)  # Cambiar dirección
 		is_o1_stopped = false
 
 	# Detener y cambiar dirección de la nave verde cuando llegue al borde derecho
 	if $o_verde.position.x >= get_viewport_rect().size.x:
-		speed2 = -abs(speed2)  # Cambiar dirección
+		speed2 = -abs(last_speed2)  # Cambiar dirección
 		is_o2_stopped = false
 
 	# Detener la nave roja cuando llegue a la mitad de la pantalla
@@ -40,12 +43,10 @@ func _process(delta):
 
 	# Cambiar la dirección de la nave roja cuando esté detenida
 	if is_o1_stopped:
-		speed1 = -speed1  # Cambiar dirección
 		is_o1_stopped = false
 
 	# Cambiar la dirección de la nave verde cuando esté detenida
 	if is_o2_stopped:
-		speed2 = -speed2  # Cambiar dirección
 		is_o2_stopped = false
 
 	# Generar meteoritos
@@ -62,10 +63,8 @@ func _generate_meteoritos(delta):
 		meteorito_instance.position.x = randf_range(0, get_viewport_rect().size.x)
 		meteorito_instance.position.y = 0
 		
-		# Añadir velocidad vertical al meteorito
-
-		position += transform.y * meteorito_speed * delta
-
+		# Conectar la señal del meteorito a un método para manejar la colisión
+		meteorito_instance.meteorito_colisiona.connect(self._on_meteorito_colisiona)
 		
 		# Agregar el meteorito a la escena
 		add_child(meteorito_instance)
@@ -74,18 +73,26 @@ func _generate_meteoritos(delta):
 		meteorito_spawn_timer = 0
 
 func _input(event):
-	if event.is_action_pressed("ui_right"):
+	if event.is_action_pressed("ui_left"):
+		last_speed1 = speed1
 		speed1 = 0
 		print("Speed1: ", speed1)  # Debug para ver la velocidad actual de la nave roja
 		is_o1_stopped = true
-	elif event.is_action_released("ui_right"):  # Captura el evento de liberación de tecla
-		speed1 = 200  # Restaura la velocidad original de la nave roja
+	elif event.is_action_released("ui_left"):  # Captura el evento de liberación de tecla
+		speed1 = -last_speed1    # Restaura la velocidad original de la nave roja
 
-	if event.is_action_pressed("ui_left"):
+	if event.is_action_pressed("ui_right"):
+		last_speed2 = speed2
 		speed2 = 0
 		print("Speed2: ", speed2)  # Debug para ver la velocidad actual de la nave verde
 		is_o2_stopped = true
-	elif event.is_action_released("ui_left"):  # Captura el evento de liberación de tecla
-		speed2 = -200  # Restaura la velocidad original de la nave verde
+	elif event.is_action_released("ui_right"):  # Captura el evento de liberación de tecla
+		speed2 = -last_speed2    # Restaura la velocidad original de la nave verde
 
+func _on_meteorito_colisiona(body):
+	# Método para manejar la colisión del meteorito con una nave
+	if body.name == "o_rojo" or body.name == "o_verde":
+		print("Meteorito colisionó")
+		# Cambiar a la escena del menú
+		get_tree().change_scene_to_file("res://scenes/menu.tscn")
 
