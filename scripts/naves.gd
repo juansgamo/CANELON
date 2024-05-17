@@ -20,25 +20,25 @@ var meteorito_spawn_interval = 1.5  # Intervalo de tiempo entre la aparición de
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# Mover las naves horizontalmente
-	$o_rojo.position.x += speed1 * delta
-	$o_verde.position.x += speed2 * delta
+	$"../o_rojo".position.x += speed1 * delta
+	$"../o_verde".position.x += speed2 * delta
 
 	# Detener y cambiar dirección de la nave roja cuando llegue al borde izquierdo
-	if $o_rojo.position.x <= 0:
+	if $"../o_rojo".position.x <= 0:
 		speed1 = abs(last_speed1)  # Cambiar dirección
 		is_o1_stopped = false
 
 	# Detener y cambiar dirección de la nave verde cuando llegue al borde derecho
-	if $o_verde.position.x >= get_viewport_rect().size.x:
+	if $"../o_verde".position.x >= get_viewport_rect().size.x:
 		speed2 = -abs(last_speed2)  # Cambiar dirección
 		is_o2_stopped = false
 
 	# Detener la nave roja cuando llegue a la mitad de la pantalla
-	if $o_rojo.position.x >= get_viewport_rect().size.x / 2:
+	if $"../o_rojo".position.x >= get_viewport_rect().size.x / 2:
 		speed1 = speed1 * -1
 
 	# Detener la nave verde cuando llegue a la mitad de la pantalla
-	if $o_verde.position.x <= get_viewport_rect().size.x / 2:
+	if $"../o_verde".position.x <= get_viewport_rect().size.x / 2:
 		speed2 = speed2 * -1
 
 	# Cambiar la dirección de la nave roja cuando esté detenida
@@ -64,8 +64,7 @@ func _generate_meteoritos(delta):
 		meteorito_instance.position.y = 0
 		
 		# Conectar la señal del meteorito a un método para manejar la colisión
-		meteorito_instance.meteorito_colisiona.connect(self._on_meteorito_colisiona)
-		
+		meteorito_instance.meteorito_colisiona.connect(_on_meteorito_colisiona)
 		# Agregar el meteorito a la escena
 		add_child(meteorito_instance)
 		
@@ -91,8 +90,8 @@ func _input(event):
 
 func _on_meteorito_colisiona(body):
 	# Método para manejar la colisión del meteorito con una nave
+	print("Meteorito colisionó con: ", body.name)  # Depuración para ver con qué colisiona el meteorito
 	if body.name == "o_rojo" or body.name == "o_verde":
-		print("Meteorito colisionó")
 		# Cambiar a la escena del menú
 		get_tree().change_scene_to_file("res://scenes/menu.tscn")
 

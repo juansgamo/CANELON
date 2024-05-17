@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://dsj2wvh16plc6" path="res://images/meteorito.png" id="1_on3er"]
 [ext_resource type="Script" path="res://scripts/meteorito.gd" id="1_x2nao"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cv1kc"]
+radius = 24.0832
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_dc026"]
 atlas = ExtResource("1_on3er")
 region = Rect2(45, 0, 129, 200)
@@ -67,22 +70,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cv1kc"]
-radius = 24.0832
-
 [node name="meteorito" type="Area2D"]
 position = Vector2(933, -97)
 script = ExtResource("1_x2nao")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -4.57764e-05)
-rotation = -0.728234
-sprite_frames = SubResource("SpriteFrames_njg62")
-frame_progress = 0.753632
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 44.0001)
 rotation = -0.820792
 shape = SubResource("CircleShape2D_cv1kc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+position = Vector2(27.4228, -35.1142)
+rotation = 0.092558
+sprite_frames = SubResource("SpriteFrames_njg62")
+frame_progress = 0.753632
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

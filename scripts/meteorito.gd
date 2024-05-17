@@ -8,9 +8,8 @@ func _physics_process(delta):
 	position.y += speed * delta  # Mover hacia abajo verticalmente
 
 func _ready():
-	$AnimatedSprite2D.play("default")
+	$CollisionShape2D/AnimatedSprite2D.play("default")
 
-func _on_body_entered(body):
-	if body.name == "o_rojo" or body.name == "o_verde":
-		meteorito_colisiona.emit() # Emite la señal con el objeto colisionado
-	queue_free()
+func _on_body_entered(_body):
+	meteorito_colisiona.emit()
+	print("Meteorito colisionó")
