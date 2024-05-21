@@ -9,6 +9,6 @@ script = ExtResource("1_ki6od")
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(960, 540.5)
+position = Vector2(1152, 590)
 scale = Vector2(1, 0.778017)
 texture = ExtResource("2_5bjsk")

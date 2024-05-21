@@ -1,11 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://b1bh5xgagbigh"]
+[gd_scene load_steps=20 format=3 uid="uid://c1b6yxqdpq0mb"]
 
-[ext_resource type="Script" path="res://scenes/world.gd" id="1_6gobm"]
 [ext_resource type="Script" path="res://scripts/p_rojo.gd" id="1_o01bs"]
 [ext_resource type="Texture2D" uid="uid://fwakh2bqaf0c" path="res://images/p.rojo (1).png" id="3_qyf1i"]
 [ext_resource type="Texture2D" uid="uid://c0vfq0pbuav32" path="res://images/p.rojo (2).png" id="3_rat01"]
 [ext_resource type="Texture2D" uid="uid://cgcgkbxbv2u2l" path="res://images/P_VERDE (1).png" id="4_f0unh"]
-[ext_resource type="Script" path="res://scripts/WallManager.gd" id="4_h2jbf"]
 [ext_resource type="StyleBox" uid="uid://cemrqrxlxm86h" path="res://styles/rojo.tres" id="4_lw2ie"]
 [ext_resource type="Script" path="res://scripts/p_verde.gd" id="4_x7001"]
 [ext_resource type="Texture2D" uid="uid://d351p1nlsjmwb" path="res://images/P_VERDE (2).png" id="5_hsevo"]
@@ -13,7 +11,53 @@
 [ext_resource type="AudioStream" uid="uid://chp4pg50js27c" path="res://sounds/menu.mp3" id="6_nehl6"]
 [ext_resource type="Texture2D" uid="uid://c4r4qfr6v5pmk" path="res://images/P_VERDE (4).png" id="7_obls6"]
 [ext_resource type="StyleBox" uid="uid://b80oucaun4527" path="res://styles/verde.tres" id="10_00cmq"]
+[ext_resource type="Script" path="res://scripts/WallsManager.gd" id="10_necpl"]
 [ext_resource type="AudioStream" uid="uid://cgj3wp5vw3lca" path="res://sounds/jump2.mp3" id="12_4x61j"]
+
+[sub_resource type="GDScript" id="GDScript_is22m"]
+script/source = "extends Node2D
+#
+#var countdown_timer: Timer
+#var game_paused: bool = true
+#
+#func _ready():
+	#countdown_timer = $CountdownTimer
+	#countdown_timer.timeout.connect(self._on_timer_timeout)
+	#countdown_timer.start()
+#
+	## Pausa todo el juego
+	#pause_game()
+#
+#func pause_game():
+	#game_paused = true
+	## Detener procesamiento de lógica y entrada del jugador
+	#set_process(false)
+	#set_process_input(false)
+#
+	## Detener las animaciones
+	##$AnimatedSprite2D.stop(\"p_rojo\")
+	##$AnimatedSprite2D.stop(\"p_verde\")
+#
+	## También podrías desactivar otros procesos necesarios para la pausa, como efectos de sonido, etc.
+#
+#func resume_game():
+	#game_paused = false
+	## Reanudar procesamiento de lógica y entrada del jugador
+	#set_process(true)
+	#set_process_input(true)
+#
+	## Reanudar las animaciones
+	##$P_ROJO.animation_player.play(\"nombre_de_la_animacion\")
+	##$P_VERDE.animation_player.play(\"nombre_de_la_animacion\")
+	##$WallManager.animation_player.play(\"nombre_de_la_animacion\")
+#
+	## Reanudar otros procesos necesarios para el juego
+#
+#func _on_timer_timeout():
+	#countdown_timer.queue_free()
+	## Reanuda el juego después de la cuenta regresiva
+	#resume_game()
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkkyd"]
 size = Vector2(35, 29.5)
@@ -59,7 +103,7 @@ Label/styles/normal = ExtResource("4_lw2ie")
 Label/styles/normal = ExtResource("10_00cmq")
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_6gobm")
+script = SubResource("GDScript_is22m")
 
 [node name="P_ROJO" type="CharacterBody2D" parent="."]
 position = Vector2(229, 219)
@@ -89,10 +133,10 @@ scale = Vector2(0.125, 0.125)
 sprite_frames = SubResource("SpriteFrames_t6e72")
 animation = &"p_verde"
 
-[node name="WallManager" type="Node2D" parent="."]
-script = ExtResource("4_h2jbf")
+[node name="WallsManager" type="Node2D" parent="."]
+script = ExtResource("10_necpl")
 
-[node name="Timer" type="Timer" parent="WallManager"]
+[node name="Timer" type="Timer" parent="WallsManager"]
 wait_time = 2.0
 autostart = true
 
@@ -125,5 +169,5 @@ stream = ExtResource("6_nehl6")
 [node name="CountdownTimer" type="Timer" parent="."]
 wait_time = 5.0
 
-[connection signal="timeout" from="WallManager/Timer" to="WallManager" method="_on_timer_timeout"]
+[connection signal="timeout" from="WallsManager/Timer" to="WallsManager" method="_on_timer_timeout"]
 [connection signal="timeout" from="CountdownTimer" to="." method="_on_timer_timeout"]

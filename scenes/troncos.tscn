@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn4sw82glqxb7"]
+
+[ext_resource type="Script" path="res://scripts/tronco.gd" id="1_1a6pw"]
+[ext_resource type="Texture2D" uid="uid://bm2mkr2qruksp" path="res://images/tronco.png" id="2_5qubu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sw0fp"]
+size = Vector2(51.115, 161)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_paa4k"]
+size = Vector2(62, 1552)
+
+[node name="torre" type="Area2D"]
+script = ExtResource("1_1a6pw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1958, 647)
+shape = SubResource("RectangleShape2D_sw0fp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(1969, 263)
+shape = SubResource("RectangleShape2D_sw0fp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1956, 638)
+rotation = -1.56853
+scale = Vector2(0.300671, 0.335125)
+texture = ExtResource("2_5qubu")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1966.92, 267.841)
+rotation = -1.57032
+scale = Vector2(0.288183, 0.322392)
+texture = ExtResource("2_5qubu")
+flip_h = true
+
+[node name="scored_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scored_area"]
+position = Vector2(2039, 428)
+shape = SubResource("RectangleShape2D_paa4k")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(1968, 1012)
+shape = SubResource("RectangleShape2D_sw0fp")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(1961, -135)
+shape = SubResource("RectangleShape2D_sw0fp")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(1964, 1001)
+rotation = -1.57032
+scale = Vector2(0.327801, 0.351018)
+texture = ExtResource("2_5qubu")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(1957, -126)
+rotation = -1.57032
+scale = Vector2(0.335146, 0.317539)
+texture = ExtResource("2_5qubu")
+flip_h = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="scored_area" to="." method="_on_scored_area_body_entered"]
