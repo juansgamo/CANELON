@@ -21,7 +21,7 @@ func toggle_fps_display(toggle):
 #AUDIO
 
 func update_master_vol(bus_idx: int, vol: float) -> void:
-	if vol > -50.0:
+	if vol > -150.0:
 		AudioServer.set_bus_volume_db(bus_idx, vol)
 	else:
 		AudioServer.set_bus_mute(bus_idx, true)

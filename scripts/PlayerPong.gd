@@ -12,3 +12,4 @@ func _physics_process(delta):
 func _on_rigid_body_2d_body_entered(_body):
 	pass # Replace with function body.
 	print("Colisión con jugador")
+

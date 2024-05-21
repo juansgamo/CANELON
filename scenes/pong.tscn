@@ -1,12 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://dyysq6kirfdwh"]
+[gd_scene load_steps=16 format=3 uid="uid://dyysq6kirfdwh"]
 
 [ext_resource type="Texture2D" uid="uid://fqk8a23ggwdm" path="res://images/pong.png" id="1_kohkx"]
+[ext_resource type="Script" path="res://scripts/pong.gd" id="1_vwcuf"]
 [ext_resource type="StyleBox" uid="uid://cemrqrxlxm86h" path="res://styles/rojo.tres" id="2_baw8w"]
 [ext_resource type="StyleBox" uid="uid://b80oucaun4527" path="res://styles/verde.tres" id="3_fnn2o"]
 [ext_resource type="Script" path="res://scripts/PlayerPong.gd" id="4_onnsu"]
 [ext_resource type="Script" path="res://scripts/PlayerPong2.gd" id="5_ypi2a"]
 [ext_resource type="PackedScene" uid="uid://bl1lv2tsvkci3" path="res://scenes/bola.tscn" id="6_f341a"]
 [ext_resource type="AudioStream" uid="uid://cne63crkkd5bl" path="res://sounds/boing.mp3" id="7_agdqo"]
+[ext_resource type="AudioStream" uid="uid://bd2fc3otolefc" path="res://sounds/pong_fondo.mp3" id="9_syv1k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ys8av"]
 size = Vector2(1922, 32)
@@ -30,6 +32,7 @@ a = Vector2(9, 1493)
 b = Vector2(-1, -419)
 
 [node name="Pong" type="Node2D"]
+script = ExtResource("1_vwcuf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(962, 543.625)
@@ -102,6 +105,7 @@ shape = SubResource("RectangleShape2D_puf4e")
 
 [node name="boing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_agdqo")
+bus = &"SFX"
 
 [node name="AreaPuntoVerde" type="StaticBody2D" parent="." groups=["verde"]]
 
@@ -115,3 +119,8 @@ position = Vector2(2007, 15)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaPuntoRojo"]
 position = Vector2(-42, -10)
 shape = SubResource("SegmentShape2D_ag6aj")
+
+[node name="fondo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_syv1k")
+autoplay = true
+bus = &"Music"

@@ -14,6 +14,7 @@ var puntuacion_verde = 0
 var config_file: ConfigFile
 
 func _ready():
+	$car.play()
 	# Obtener las referencias a los labels
 	load_puntuacion()
 	label1 = $Label1
@@ -49,25 +50,29 @@ func _process(delta):
 		if $CAR1.position.x > get_viewport_rect().end.x:
 			$CAR1.position.x = 0
 			car1_score += 1
+			$f1.play()
 			$Label1.text = "Rojo:  " + str(car1_score)
 			if car1_score >= 5:
 				puntuacion_rojo += 1
 				actualizar_puntuacion()
 				# Salir al menú principal
-				get_tree().change_scene_to_file("res://scenes/menu.tscn")
+				salir()
 	if speedVerde > 0:
 		$CAR2.position.x += speedVerde * delta  # Modifica para ajustar la velocidad base
 		if $CAR2.position.x > get_viewport_rect().end.x:
 			$CAR2.position.x = 0
 			car2_score += 1
+			$f1.play()
 			$Label2.text = "Verde: " + str(car2_score)
 			if car2_score >= 5:
 				puntuacion_verde += 1
 				actualizar_puntuacion()
-				# Salir al menú principal
-				get_tree().change_scene_to_file("res://scenes/menu.tscn")
+				salir()
 				
 				
+func salir():
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")
+		
 func actualizar_puntuacion():
 	# Actualizar el archivo de configuración con la puntuación actual
 	var config = ConfigFile.new()

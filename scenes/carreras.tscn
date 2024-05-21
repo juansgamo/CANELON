@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d808h8uawksa"]
+[gd_scene load_steps=12 format=3 uid="uid://d808h8uawksa"]
 
 [ext_resource type="Script" path="res://scripts/carreras.gd" id="1_2ivje"]
 [ext_resource type="Texture2D" uid="uid://mhoarsi0j4yl" path="res://images/fondoCarreras.jpg" id="2_nly1x"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bsbfmin5x781u" path="res://images/cocheVerde.png" id="4_g0w15"]
 [ext_resource type="StyleBox" uid="uid://cemrqrxlxm86h" path="res://styles/rojo.tres" id="5_8p47p"]
 [ext_resource type="StyleBox" uid="uid://b80oucaun4527" path="res://styles/verde.tres" id="6_dry7u"]
+[ext_resource type="AudioStream" uid="uid://y7bo2wxx4ldm" path="res://sounds/f1.mp3" id="7_4bgys"]
+[ext_resource type="AudioStream" uid="uid://s0proigsbmjm" path="res://sounds/music_car.mp3" id="8_mixsa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7cr8s"]
 size = Vector2(770.331, 354.162)
@@ -69,6 +71,14 @@ offset_bottom = 983.0
 theme = SubResource("Theme_r5vcf")
 theme_override_font_sizes/font_size = 50
 text = "Verde: 0"
+
+[node name="f1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_4bgys")
+bus = &"SFX"
+
+[node name="car" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_mixsa")
+autoplay = true
 
 [connection signal="body_entered" from="CAR1" to="." method="_on_car_1_body_entered"]
 [connection signal="body_entered" from="CAR2" to="." method="_on_car_2_body_entered"]

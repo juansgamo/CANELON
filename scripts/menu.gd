@@ -6,8 +6,6 @@ var puntuacion_verde = 0
 var label_rojo: Label
 var label_verde: Label
 
-
-@onready var menu_multijugador = preload("res://scenes/menu_multijugador.tscn") as PackedScene
 var config_file: ConfigFile
 
 func _ready():
@@ -34,12 +32,15 @@ func update_score_label2():
 	$Label3.text = str(puntuacion_verde)
 
 func _on_salir_pressed():
+	$tap.play()
 	get_tree().quit()
 
 func _on_ajustes_pressed():
+	$tap.play()
 	$Ajustes.popup() 
 
 #func _on_modo_multijugador_pressed():
+	#$tap.play()
 	#var random_option = randi_range(0, 3)  # Genera un número aleatorio entre 0 y 1
 #
 	#if random_option == 0:
@@ -53,9 +54,11 @@ func _on_ajustes_pressed():
 		
 
 func _on_modo_multijugador_pressed():
+	$tap.play()
 	get_tree().change_scene_to_file("res://scenes/carreras.tscn")
 	
 func _on_button_pressed():
+	$tap.play()
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 
 func actualizar_puntuacion():
@@ -73,6 +76,7 @@ func load_puntuacion():
 		puntuacion_verde = config.get_value("game_data", "puntuacion_verde", 0)
 
 func _on_reinicar_pun_pressed():
+	$tap.play()
 	puntuacion_rojo = 0
 	puntuacion_verde = 0
 	actualizar_puntuacion()
