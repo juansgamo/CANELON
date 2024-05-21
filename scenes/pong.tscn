@@ -15,9 +15,11 @@ size = Vector2(1922, 32)
 size = Vector2(1919, 34)
 
 [sub_resource type="Theme" id="Theme_wswj3"]
+Label/font_sizes/font_size = 40
 Label/styles/normal = ExtResource("2_baw8w")
 
 [sub_resource type="Theme" id="Theme_nsxkf"]
+Label/font_sizes/font_size = 40
 Label/styles/normal = ExtResource("3_fnn2o")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_puf4e"]
@@ -54,6 +56,9 @@ offset_top = 60.0
 offset_right = 904.0
 offset_bottom = 130.0
 theme = SubResource("Theme_wswj3")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
 offset_left = 1007.0
@@ -61,6 +66,9 @@ offset_top = 61.0
 offset_right = 1107.0
 offset_bottom = 131.0
 theme = SubResource("Theme_nsxkf")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlayerPong" type="CharacterBody2D" parent="." groups=["jugadores"]]
 position = Vector2(64, 516)
