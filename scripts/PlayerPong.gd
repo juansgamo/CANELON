@@ -7,4 +7,3 @@ func _physics_process(delta):
 	direccion.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	var movimiento = direccion * velocidad * delta
 	move_and_collide(movimiento)
-

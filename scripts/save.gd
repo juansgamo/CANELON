@@ -14,13 +14,10 @@ func load_data() -> void:
 			"full_screen_on": false,
 			"vsync_on": false,
 			"display_fps": false,
-			"max_fps": 0, # 0 es ilimitado
-			"brightness": 1,
+			"max_fps": 0,
 			"master_vol": -10,
 			"music_vol": -10,
 			"sfx_vol": -10,
-			"fov": 70,
-			"mouse_sens": 0.002
 		}
 		save_data()
 	else:

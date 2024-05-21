@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyysq6kirfdwh"]
+[gd_scene load_steps=15 format=3 uid="uid://dyysq6kirfdwh"]
 
 [ext_resource type="Texture2D" uid="uid://fqk8a23ggwdm" path="res://images/pong.png" id="1_kohkx"]
 [ext_resource type="StyleBox" uid="uid://cemrqrxlxm86h" path="res://styles/rojo.tres" id="2_baw8w"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/PlayerPong.gd" id="4_onnsu"]
 [ext_resource type="Script" path="res://scripts/PlayerPong2.gd" id="5_ypi2a"]
 [ext_resource type="Script" path="res://scripts/Ball.gd" id="6_80uhu"]
+[ext_resource type="Texture2D" uid="uid://buvi6muuv54eb" path="res://images/ball.pong.png" id="7_bb2s1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ys8av"]
 size = Vector2(1922, 32)
@@ -20,10 +21,14 @@ Label/styles/normal = ExtResource("2_baw8w")
 Label/styles/normal = ExtResource("3_fnn2o")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_puf4e"]
-size = Vector2(34, 715)
+size = Vector2(30, 128)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cl7wh"]
+friction = 0.0
+bounce = 100.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xuukl"]
-radius = 33.0151
+radius = 26.0192
 
 [node name="Pong" type="Node2D"]
 
@@ -35,14 +40,14 @@ texture = ExtResource("1_kohkx")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, -2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="TopShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(960, 25)
 shape = SubResource("RectangleShape2D_ys8av")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(599, 217)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="DownShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(362.5, 846)
 shape = SubResource("RectangleShape2D_6drj3")
 
@@ -70,7 +75,7 @@ offset_top = -64.0
 offset_right = 13.0
 offset_bottom = 65.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPong"]
+[node name="PlayerShape2D" type="CollisionShape2D" parent="PlayerPong"]
 position = Vector2(-2, 1)
 shape = SubResource("RectangleShape2D_puf4e")
 
@@ -84,20 +89,26 @@ offset_top = -64.0
 offset_right = 13.0
 offset_bottom = 65.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPong2"]
-position = Vector2(0, 35.5)
+[node name="PlayerShape22D" type="CollisionShape2D" parent="PlayerPong2"]
+position = Vector2(-2, 1)
 shape = SubResource("RectangleShape2D_puf4e")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(959, 444)
+position = Vector2(956, 526)
 mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_cl7wh")
 gravity_scale = 0.0
-max_contacts_reported = 4
-contact_monitor = true
 script = ExtResource("6_80uhu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(0, 109)
+[node name="Sprite2D2" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(1.00004, 1.12502)
+scale = Vector2(0.211111, 0.217361)
+texture = ExtResource("7_bb2s1")
+
+[node name="BallShape2d" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_xuukl")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
 
 [connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_body_entered"]

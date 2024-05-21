@@ -1,7 +1,5 @@
 extends Node
 signal fps_displayed(value)
-signal brightness_updated(value)
-signal mouse_sens_updated(value)
 
 #video
 func change_display_mode(toggle):
@@ -19,14 +17,6 @@ func change_vsync_mode(toggle):
 func toggle_fps_display(toggle):
 	emit_signal("fps_displayed",toggle)
 
-func set_max_fps(value: int) -> void:
-	if value < 500:
-		Engine.time_scale = 1.0 / value
-	else:
-		Engine.time_scale = 0.0
-
-func update_brightness(value):
-	emit_signal("brightness_updated",value)
 
 #AUDIO
 
@@ -47,8 +37,4 @@ func update_master_vol(bus_idx: int, vol: float) -> void:
 			Save.game_data.sfx_vol = vol
 			Save.save_data()
 
-func update_mouse_sens(value: float) -> void:
-	emit_signal("mouse_sens_updated", value)
-	Save.game_data.mouse_sens = value
-	Save.save_data()
 

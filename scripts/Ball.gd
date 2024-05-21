@@ -1,26 +1,21 @@
 extends RigidBody2D
 
-
-# Called when the node enters the scene tree for the first time.
-func _draw() -> void:
-	draw_circle(Vector2(0,0),5,Color(1,1,1,))
-
+var velocidad = 500
+var direction = Vector2(1, 0)  # Dirección inicial hacia la derecha
 var isColliding = false
-var direction = 1
-var velocidad = 300
+
+# Factor de aumento de velocidad
+var aumento_de_velocidad = 2
 
 func _ready() -> void:
-	linear_velocity.x = velocidad*direction
-	
-func _physics_process(delta: float)-> void:
-	linear_velocity.x = velocidad*direction
-	isColliding = false
-
+	linear_velocity = direction * velocidad
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("PlayerPong") and not isColliding:
-		print("entro")
+		print("Colisión con jugador")
 		direction.x *= -1  # Invertir la dirección horizontal
+		velocidad *= aumento_de_velocidad  # Aumentar la velocidad
 		linear_velocity = direction * velocidad
 		isColliding = true
-
+	elif not body.is_in_group("PlayerPong"):
+		isColliding = false
