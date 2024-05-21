@@ -110,6 +110,20 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 263.0
+offset_right = 649.0
+offset_bottom = 504.0
+theme = SubResource("Theme_1oevk")
+text = "Controles predeterminados
+para el jugador rojo:
+
+Tecla \"A\" y tecla \"D\""
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Label3" type="Label" parent="."]
 layout_mode = 0
 offset_left = 1202.0
@@ -118,6 +132,20 @@ offset_right = 1302.0
 offset_bottom = 179.0
 theme = SubResource("Theme_3mg2p")
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1210.0
+offset_top = 255.0
+offset_right = 1868.0
+offset_bottom = 496.0
+theme = SubResource("Theme_3mg2p")
+text = "Controles predeterminados
+para el jugador VERDE:
+
+Flecha izquierda y flecha derecha "
 horizontal_alignment = 1
 vertical_alignment = 1
 

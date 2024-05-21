@@ -38,24 +38,24 @@ func _on_salir_pressed():
 func _on_ajustes_pressed():
 	$tap.play()
 	$Ajustes.popup() 
-
+#
 #func _on_modo_multijugador_pressed():
 	#$tap.play()
-	#var random_option = randi_range(0, 3)  # Genera un número aleatorio entre 0 y 1
+	#var random_option = randi_range(0, 2)  # Genera un número aleatorio entre 0 y 3
 #
 	#if random_option == 0:
 		#get_tree().change_scene_to_file("res://scenes/carreras.tscn")
-	#elif random_option == 1:
-		#get_tree().change_scene_to_file("res://scenes/world.tscn")
+	##elif random_option == 1:
+		##get_tree().change_scene_to_file("res://scenes/world.tscn")
 	#elif random_option == 1:
 		#get_tree().change_scene_to_file("res://scenes/naves.tscn")
-	#elif random_option == 1:
+	#elif random_option == 2:
 		#get_tree().change_scene_to_file("res://scenes/pong.tscn")
 		
-
+#
 func _on_modo_multijugador_pressed():
 	$tap.play()
-	get_tree().change_scene_to_file("res://scenes/carreras.tscn")
+	get_tree().change_scene_to_file("res://scenes/naves.tscn")
 	
 func _on_button_pressed():
 	$tap.play()

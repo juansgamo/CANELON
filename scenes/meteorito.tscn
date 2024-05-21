@@ -85,4 +85,9 @@ rotation = 0.092558
 sprite_frames = SubResource("SpriteFrames_njg62")
 frame_progress = 0.753632
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
