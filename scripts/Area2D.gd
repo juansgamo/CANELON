@@ -1,4 +1,5 @@
-extends CharacterBody2D
+extends Area2D
+
 
 var velocidad = 1000.0
 var direccion = Vector2.ZERO

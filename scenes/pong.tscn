@@ -1,12 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://dyysq6kirfdwh"]
+[gd_scene load_steps=14 format=3 uid="uid://dyysq6kirfdwh"]
 
 [ext_resource type="Texture2D" uid="uid://fqk8a23ggwdm" path="res://images/pong.png" id="1_kohkx"]
 [ext_resource type="StyleBox" uid="uid://cemrqrxlxm86h" path="res://styles/rojo.tres" id="2_baw8w"]
 [ext_resource type="StyleBox" uid="uid://b80oucaun4527" path="res://styles/verde.tres" id="3_fnn2o"]
 [ext_resource type="Script" path="res://scripts/PlayerPong.gd" id="4_onnsu"]
 [ext_resource type="Script" path="res://scripts/PlayerPong2.gd" id="5_ypi2a"]
-[ext_resource type="Script" path="res://scripts/Ball.gd" id="6_80uhu"]
-[ext_resource type="Texture2D" uid="uid://buvi6muuv54eb" path="res://images/ball.pong.png" id="7_bb2s1"]
+[ext_resource type="PackedScene" uid="uid://bl1lv2tsvkci3" path="res://scenes/bola.tscn" id="6_f341a"]
+[ext_resource type="AudioStream" uid="uid://cne63crkkd5bl" path="res://sounds/boing.mp3" id="7_agdqo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ys8av"]
 size = Vector2(1922, 32)
@@ -21,14 +21,11 @@ Label/styles/normal = ExtResource("2_baw8w")
 Label/styles/normal = ExtResource("3_fnn2o")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_puf4e"]
-size = Vector2(30, 128)
+size = Vector2(76, 128)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cl7wh"]
-friction = 0.0
-bounce = 100.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xuukl"]
-radius = 26.0192
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ag6aj"]
+a = Vector2(9, 1493)
+b = Vector2(-1, -419)
 
 [node name="Pong" type="Node2D"]
 
@@ -65,7 +62,7 @@ offset_right = 1107.0
 offset_bottom = 131.0
 theme = SubResource("Theme_nsxkf")
 
-[node name="PlayerPong" type="CharacterBody2D" parent="."]
+[node name="PlayerPong" type="CharacterBody2D" parent="." groups=["jugadores"]]
 position = Vector2(64, 516)
 script = ExtResource("4_onnsu")
 
@@ -76,10 +73,10 @@ offset_right = 13.0
 offset_bottom = 65.0
 
 [node name="PlayerShape2D" type="CollisionShape2D" parent="PlayerPong"]
-position = Vector2(-2, 1)
+position = Vector2(-26, 1)
 shape = SubResource("RectangleShape2D_puf4e")
 
-[node name="PlayerPong2" type="CharacterBody2D" parent="."]
+[node name="PlayerPong2" type="CharacterBody2D" parent="." groups=["jugadores"]]
 position = Vector2(1864, 543)
 script = ExtResource("5_ypi2a")
 
@@ -90,25 +87,23 @@ offset_right = 13.0
 offset_bottom = 65.0
 
 [node name="PlayerShape22D" type="CollisionShape2D" parent="PlayerPong2"]
-position = Vector2(-2, 1)
+position = Vector2(20, 1)
 shape = SubResource("RectangleShape2D_puf4e")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(956, 526)
-mass = 0.01
-physics_material_override = SubResource("PhysicsMaterial_cl7wh")
-gravity_scale = 0.0
-script = ExtResource("6_80uhu")
+[node name="Area2D" parent="." instance=ExtResource("6_f341a")]
 
-[node name="Sprite2D2" type="Sprite2D" parent="RigidBody2D"]
-position = Vector2(1.00004, 1.12502)
-scale = Vector2(0.211111, 0.217361)
-texture = ExtResource("7_bb2s1")
+[node name="boing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_agdqo")
 
-[node name="BallShape2d" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(1, 0)
-shape = SubResource("CircleShape2D_xuukl")
+[node name="AreaPuntoVerde" type="StaticBody2D" parent="." groups=["verde"]]
 
-[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaPuntoVerde"]
+position = Vector2(-42, -10)
+shape = SubResource("SegmentShape2D_ag6aj")
 
-[connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_body_entered"]
+[node name="AreaPuntoRojo" type="StaticBody2D" parent="." groups=["rojo"]]
+position = Vector2(2007, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaPuntoRojo"]
+position = Vector2(-42, -10)
+shape = SubResource("SegmentShape2D_ag6aj")
