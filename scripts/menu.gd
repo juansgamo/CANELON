@@ -39,23 +39,23 @@ func _on_ajustes_pressed():
 	$tap.play()
 	$Ajustes.popup() 
 #
-#func _on_modo_multijugador_pressed():
-	#$tap.play()
-	#var random_option = randi_range(0, 2)  # Genera un número aleatorio entre 0 y 3
-#
-	#if random_option == 0:
-		#get_tree().change_scene_to_file("res://scenes/carreras.tscn")
-	##elif random_option == 1:
-		##get_tree().change_scene_to_file("res://scenes/world.tscn")
-	#elif random_option == 1:
-		#get_tree().change_scene_to_file("res://scenes/naves.tscn")
-	#elif random_option == 2:
-		#get_tree().change_scene_to_file("res://scenes/pong.tscn")
-		
-#
 func _on_modo_multijugador_pressed():
 	$tap.play()
-	get_tree().change_scene_to_file("res://scenes/naves.tscn")
+	var random_option = randi_range(0, 3)  # Genera un número aleatorio entre 0 y 3
+#
+	if random_option == 0:
+		get_tree().change_scene_to_file("res://scenes/carreras.tscn")
+	elif random_option == 1:
+		get_tree().change_scene_to_file("res://scenes/naves.tscn")
+	elif random_option == 2:
+		get_tree().change_scene_to_file("res://scenes/pong.tscn")
+	elif random_option == 3:
+		get_tree().change_scene_to_file("res://scenes/flappyWorld.tscn")
+		
+#
+#func _on_modo_multijugador_pressed():
+	#$tap.play()
+	#get_tree().change_scene_to_file("res://scenes/naves.tscn")
 	
 func _on_button_pressed():
 	$tap.play()
@@ -74,6 +74,8 @@ func load_puntuacion():
 	if config.load("user://game_result.cfg") == OK:
 		puntuacion_rojo = config.get_value("game_data", "puntuacion_rojo", 0)
 		puntuacion_verde = config.get_value("game_data", "puntuacion_verde", 0)
+	update_score_label1()
+	update_score_label2()
 
 func _on_reinicar_pun_pressed():
 	$tap.play()

@@ -90,13 +90,13 @@ visible = false
 
 [node name="FpsLabel" parent="." instance=ExtResource("9_4abwv")]
 layout_mode = 1
-offset_left = 83.0
-offset_top = 970.995
-offset_right = 111.0
-offset_bottom = 993.995
+offset_left = 6.0
+offset_top = 982.0
+offset_right = 34.0
+offset_bottom = 1005.0
 
 [node name="CanelonLogo" type="Sprite2D" parent="."]
-position = Vector2(960, 270)
+position = Vector2(940, 284)
 texture = ExtResource("9_ln2xq")
 
 [node name="Label2" type="Label" parent="."]
