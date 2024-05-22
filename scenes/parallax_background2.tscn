@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1k85m5uuvcwo"]
+[gd_scene load_steps=3 format=3 uid="uid://dui34bjft68aw"]
 
 [ext_resource type="Script" path="res://scripts/parallaxBackground2.gd" id="1_ki6od"]
 [ext_resource type="Texture2D" uid="uid://b0hftfvqrkygp" path="res://images/fondo_flappy.png" id="2_5bjsk"]
