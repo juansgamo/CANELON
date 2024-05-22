@@ -37,7 +37,7 @@ func update_score_label2():
 	$Label2.text = str(puntuacion_verde)
 
 func _input(event):
-	if event.is_action_pressed("ui_a") or event.is_action_pressed("ui_d") :
+	if event.is_action_pressed("ui_a") or event.is_action_pressed("ui_d"):
 		speedRojo += acceleration
 		print("speedRojo: ", speedRojo)  # Debug para ver la velocidad actual de Car1
 	if event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right"):

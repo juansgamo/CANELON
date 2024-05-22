@@ -8,9 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://chp4pg50js27c" path="res://sounds/menu.mp3" id="6_qr16y"]
 [ext_resource type="PackedScene" uid="uid://mgesb0krb0v7" path="res://scenes/ajustes.tscn" id="8_60l7p"]
 [ext_resource type="PackedScene" uid="uid://0vbxuajqck1q" path="res://scenes/FpsLabel.tscn" id="9_4abwv"]
-[ext_resource type="Texture2D" uid="uid://duvdgb5x7v3i8" path="res://images/CanelonLogo_NoBG.png" id="9_ln2xq"]
 [ext_resource type="StyleBox" uid="uid://cemrqrxlxm86h" path="res://styles/rojo.tres" id="10_qnpxl"]
 [ext_resource type="StyleBox" uid="uid://b80oucaun4527" path="res://styles/verde.tres" id="11_ski3v"]
+[ext_resource type="Texture2D" uid="uid://bvc1mv8eri0am" path="res://images/Logo.png" id="12_ia3s4"]
 [ext_resource type="AudioStream" uid="uid://yshb4pv77nxe" path="res://sounds/tap.mp3" id="12_mxo64"]
 
 [sub_resource type="Theme" id="Theme_n4pca"]
@@ -42,13 +42,13 @@ script = ExtResource("1_xwwtt")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 723.0
-offset_top = 534.0
-offset_right = 1023.0
-offset_bottom = 1234.0
+offset_left = 729.0
+offset_top = 738.0
+offset_right = 1029.0
+offset_bottom = 1438.0
 scale = Vector2(1.49361, 2.27268)
 
-[node name="Modo_Multijugador" type="Button" parent="VBoxContainer"]
+[node name="Jugar" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_n4pca")
 text = "Jugar
@@ -94,10 +94,6 @@ offset_left = 6.0
 offset_top = 982.0
 offset_right = 34.0
 offset_bottom = 1005.0
-
-[node name="CanelonLogo" type="Sprite2D" parent="."]
-position = Vector2(940, 284)
-texture = ExtResource("9_ln2xq")
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
@@ -153,7 +149,12 @@ vertical_alignment = 1
 stream = ExtResource("12_mxo64")
 autoplay = true
 
-[connection signal="pressed" from="VBoxContainer/Modo_Multijugador" to="." method="_on_modo_multijugador_pressed"]
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(924, 321)
+scale = Vector2(0.581481, 0.633796)
+texture = ExtResource("12_ia3s4")
+
+[connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
 [connection signal="pressed" from="VBoxContainer/Ajustes" to="." method="_on_ajustes_pressed"]
 [connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]
 [connection signal="pressed" from="VBoxContainer/ReinicarPun" to="." method="_on_reinicar_pun_pressed"]

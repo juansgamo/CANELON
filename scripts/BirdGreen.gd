@@ -9,10 +9,10 @@ func _physics_process(delta): # physic process(siempre va a 60fps)
 	velocity.y += GRAVITY * delta
 	
 	if position.y > 1160 or position.y < 520:
-		get_tree().call_deferred("reload_current_scene")
+		get_tree().change_scene_to_file("res://scenes/menu.tscn")
 	move_and_slide()
 
 func _input(event): 
-	if event.is_action_pressed("ui_left"):
+	if event.is_action_pressed("ui_a") or event.is_action_pressed("ui_d"):
 		print("Acabas de saltar")
 		velocity.y = -300

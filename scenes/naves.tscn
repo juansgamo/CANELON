@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://pi6yrfgku4qm"]
 
-[ext_resource type="Script" path="res://scripts/naves.gd" id="1_x6phl"]
+[ext_resource type="Script" path="res://scripts/metrorito_manager.gd" id="1_x6phl"]
 [ext_resource type="Texture2D" uid="uid://djdtycuhu0sj5" path="res://images/espacio.jpg" id="2_bwkkh"]
 [ext_resource type="Texture2D" uid="uid://dhab6hmj1xxib" path="res://images/o_rojo.png" id="3_ihc0t"]
 [ext_resource type="Texture2D" uid="uid://bcxveakr7it40" path="res://images/o_verde.png" id="4_t3har"]

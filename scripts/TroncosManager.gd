@@ -1,7 +1,6 @@
 extends Node2D
 
 const WALL = preload("res://scenes/troncos.tscn")
-var points = 0
 
 func _ready():
 	spawn_wall()
@@ -22,9 +21,4 @@ func death():
 	
 func score():
 	$"../AudioStreamPlayer".play()
-	points += 1
-	update_score_label()
 	print("score")
-
-func update_score_label():
-	$"../scoreLabel".text = str(points)

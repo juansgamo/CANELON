@@ -39,7 +39,7 @@ func _on_ajustes_pressed():
 	$tap.play()
 	$Ajustes.popup() 
 #
-func _on_modo_multijugador_pressed():
+func _on_jugar_pressed():
 	$tap.play()
 	var random_option = randi_range(0, 3)  # Genera un número aleatorio entre 0 y 3
 #
